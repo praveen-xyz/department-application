@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Titans Student Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;700;900&family=Kufam:ital,wght@0,400..900;1,400..900&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00A9FF;
+      --secondary: #89CFF3;
+      --accent: #0077B6;
+      --highlight: #A0E9FF;
+      --bg-soft: #F8FAFC;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      color: #1e293b;
+      background-color: #f8fafc;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- PREMIUM SCROLLBAR STYLING --- */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
+    }
+    
+    * {
+      scroll-behavior: smooth;
+    }
+
+    /* GLASS THEME REFINED */
+    .bg-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      background: 
+        radial-gradient(at 0% 0%, rgba(0, 169, 255, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(137, 207, 243, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.8) 0px, transparent 50%);
+      background-size: 100% 100%;
+      filter: blur(80px);
+      opacity: 1;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+    }
+
+    /* Modern 3D Button */
+    .btn-3d {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 10px 25px -5px rgba(0, 169, 255, 0.35);
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* PAGE TRANSITIONS */
+    .page-enter {
+      animation: pageEnter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      transform-origin: center top;
+    }
+
+    @keyframes pageEnter {
+      0% { 
+        opacity: 0; 
+        transform: translateY(15px) scale(0.98); 
+        filter: blur(4px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+        filter: blur(0);
+      }
+    }
+
+    .stagger-item {
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-modern {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.03);
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    /* ENHANCED HOVER CARD WITH BLUE LIGHTING GLOW */
+    .hover-card {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .hover-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: #00A9FF; /* Blue Border */
+      box-shadow: 0 15px 35px -10px rgba(0, 169, 255, 0.3); /* Blue Lighting Glow */
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 10;
+    }
+    .hover-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 5px 15px -5px rgba(0, 169, 255, 0.2);
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "path": "https://esm.sh/path@^0.12.7",
+    "url": "https://esm.sh/url@^0.11.4",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.93.0",
+    "fflate": "https://esm.sh/fflate@^0.8.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="theme-glass transition-colors duration-500 selection:bg-blue-100 selection:text-blue-900">
+  <div class="bg-mesh"></div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
